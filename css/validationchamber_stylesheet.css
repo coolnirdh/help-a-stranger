@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+		background-color: #f4f4f4;
+		color: #333;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+		margin: 0;
+	}
+	
+	.content-div{
+		width: 750px; max-width: 75%;
+		border: 3px solid #fff;
+		border-radius: 10px; overflow: auto; margin: 0 auto; margin-top: 25px; margin-bottom: 25px; padding: 50px; background-color: #fff; padding-top: 10px;
+		line-height: 50px;
+		font-size: 30px;
+	}
+	
+	.content-div h1{
+		font-size: 40px;
+	}
+	
+	.content-div a.telephone{
+		text-decoration: none;
+		background-color: #ccc;
+		border-radius: 30px;
+		padding: 10px 30px;
+		color: #333;
+	}
+	
+	.content-div div.approve{
+		text-decoration: none;
+		background-color: #72c56c;
+		border-radius: 30px;
+		padding: 10px 30px;
+		color: #fff;
+		cursor: pointer;
+	}
+	
+	.content-div div.show-another{
+		text-decoration: none;
+		background-color: #eab800;
+		border-radius: 30px;
+		padding: 10px 30px;
+		color: #856404;
+		cursor: pointer;
+		margin-top: 25px;
+	}
+	
+	.content-div div.disapprove{
+		text-decoration: none;
+		background-color: #db524b;
+		border-radius: 30px;
+		padding: 10px 30px;
+		color: #fff;
+		cursor: pointer;
+		margin-top: 50px;
+	}
+
+	.approved-overlay-div{
+		position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(88,185,87,0.9); display: none;
+	}
+
+	.skip-overlay-div{
+		position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(234,184,0,0.9); display: none;
+	}
+
+	.rejected-overlay-div{
+		position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(219,82,75,0.95); display: none;
+	}
+
+	.rejected-final-overlay-div{
+		position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background-color: rgba(126,33,28,0.9); display: none;
+	}
+
+	.overlay-sub-div{
+		width: 30%; max-width: 90%; margin: 0 auto; margin-top: 100px; color: #fff;
+	}

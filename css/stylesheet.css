@@ -1,0 +1,138 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+		background-color: #f4f4f4;
+		color: #333;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+		margin: 0;
+	}
+	
+	body h1, body h2{
+		font-weight: bold !important;
+		letter-spacing: 3px;
+	}
+	
+	.content-div{
+		width: 750px; max-width: 90%;
+		border: 3px solid #fff;
+		border-radius: 10px; overflow: auto; margin: 0 auto; margin-top: 25px; margin-bottom: 25px; padding: 50px; background-color: #fff;
+		line-height: 30px;
+	}
+	
+	.date-box{
+		margin-left: 15px; text-align: center; border-radius: 5px; padding: 3px 10px; background-color: #B00F0F; color: #fff;
+	}
+	
+	.date-box .date-box-date{
+		font-size: 55px; margin-top: 10px; font-weight: bold; clear: both;
+	}
+	
+	.date-box .date-box-content{
+		font-size: 12px; margin-top: 18px; margin-bottom: 10px; line-height: 15px;
+	}
+	
+	#AccountInfo{
+		background-color: #d4edda;
+		padding: 15px;
+		color: #333;
+		margin-top: 20px;
+		border-radius: 5px;
+	}
+	
+	#AccountInfo img{
+		text-align: center;
+		margin: 0 0 10px 10px;
+		width: 100%;
+	}
+	
+	#AccountInfo td{
+		padding: 7px;
+		vertical-align: top;
+	}
+	
+	#AccountInfo .upi-div{
+		padding-left: 0px !important;
+	}
+	
+	.AccountInfoHeadline{
+		color: #000; font-size: 16px; text-align: center; text-transform: uppercase; font-weight: bold; margin-bottom: -15px;
+	}
+	
+	.qr-div{
+		float: right;
+	}
+	
+	.badAccInfo{
+		background-color: #fff3cd !important;
+	}
+	
+	.Tx-Fail-Div{
+		cursor: pointer;
+		text-align: left; color: #666;
+		padding: 3px 7px; border-radius: 5px; border-top-left-radius: 0px; border-top-right-radius: 0px;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
+	
+	.Tip-Div{
+		text-align: left; color: #846b5d;
+		background-color: #e6b9a1;
+		margin-top: 10px;
+		padding: 3px 7px; border-radius: 5px;
+		text-decoration: none;
+		line-height: 25px;
+		display: none;
+	}
+	
+	.Tip-Div div{
+		padding: 10px;
+	}
+	
+	
+	.copy-btn{
+		display: inline;
+		margin-left: 8px;
+		background-color: #666;
+		padding: 3px 7px;
+		font-size: 15px;
+		color: #fff;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+	
+	.copied{
+		color: #333;
+	}
+	
+	.Bad-Upi-Report{
+		position: fixed;
+		top: 25%;
+		width: 50%;
+		padding: 10px;
+		margin: 0 auto;
+		color: #fff;
+		background-color: #c03c3c;
+		display: none;
+		z-index: 9999;
+	}
+	
+	.reload-overlay-div{
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 9990;
+		background: rgba(0, 0, 0, 0.8);
+		display: none;
+	}
+	
+	.help-another-btn{
+		background: #78ce9c; text-align: center; cursor: pointer;padding: 10px 20px; border-radius: 4px; color: #fff; text-decoration: none; text-transform: uppercase;
+	}
+	
+	.footer-content{
+		font-size: 12px; color: #999; margin-top: -10px; margin-bottom: 20px;
+	}
