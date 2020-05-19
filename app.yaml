@@ -1,2 +1,6 @@
 runtime: php73
 
+handlers:
+  - url: /(.+\.(gif|png|jpg|css|js))$
+    static_files: \1
+    upload: .+\.(gif|png|jpg|css|js)$
