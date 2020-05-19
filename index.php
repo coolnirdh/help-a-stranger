@@ -152,9 +152,13 @@ function copyToClipboard(text) {
 		$.get("<?php echo $form_url; ?>", setTimeout(location.reload.bind(location), 3000));
 	  });
 	  
-	  $(".copy-btn").click(function(){
+	  $(".upi-div:last").click(function(){
 		$.get("<?php echo $copy_form_url; ?>"); 
-		$(this).html('COPIED').addClass("copied");
+		$(this).find('.copy-btn').html('COPIED').addClass("copied");
+	  });
+	  
+	  $(".upi-div").click(function(){
+		$(this).find('.copy-btn').html('COPIED').addClass("copied");
 	  });
 
 	});
@@ -199,8 +203,33 @@ function copyToClipboard(text) {
 	</div>
 	<div class="clearfix"></div>
 <div id="AccountInfo">
+	<?php if($row[4] == 'i2c-b1') : ?>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+	<table style="border: none; text-align: left;">
+		<tr>
+			<td>Name: </td>
+			<td><?php echo $row[1]; ?></td>
+		</tr>
+		<tr>
+			<td>Story: </td>
+			<td><?php echo $row[3]; ?></td>
+		</tr>
+		<tr>
+			<td>IFSC: </td>
+			<?php $to_copy = $row[5]; ?>
+			<td><div class="upi-div" style="cursor: pointer; border-radius: 3px; padding-left: 10px;"onClick="javascript: copyToClipboard('<?php echo $to_copy; ?>');"><?php echo ($row[5]); ?> <div class="copy-btn">COPY</div></div></td>
+
+		</tr>
+		<tr>
+			<td>Account: </td>
+			<?php $to_copy = $row[6]; ?>
+			<td><div class="upi-div" style="cursor: pointer; border-radius: 3px; padding-left: 10px;"onClick="javascript: copyToClipboard('<?php echo $to_copy; ?>');"><?php echo ($row[6]); ?> <div class="copy-btn">COPY</div></div></td>
+		</tr>
+	</table>
+	</div>
+	<?php else : ?>
 	<div class="qr-div col-md-3 col-sm-12 col-xs-12">
-	<img src="https://upiqr.in/api/qr/?name=<?php echo $row[1]; ?>&vpa=<?php echo $row[6]; ?>"/>
+		<img src="https://upiqr.in/api/qr/?name=<?php echo $row[1]; ?>&vpa=<?php echo $row[6]; ?>"/>
 	</div>
 	<div class="col-md-9 col-sm-12 col-xs-12">
  	<table style="border: none; text-align: left;">
@@ -233,6 +262,7 @@ function copyToClipboard(text) {
 		</tr>
 	</table>
 	</div>
+	<?php endif; ?>
 	<div class="clearfix"></div>
 </div>
 	<div class="Tip-Div" style="text-align: center;">
