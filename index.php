@@ -203,7 +203,7 @@ function copyToClipboard(text) {
 	</div>
 	<div class="clearfix"></div>
 <div id="AccountInfo">
-	<?php if($row[4] == 'i2c-b1') : ?>
+	<?php if($row[3] == 'i2c-b1') : ?>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 	<table style="border: none; text-align: left;">
 		<tr>
@@ -212,7 +212,7 @@ function copyToClipboard(text) {
 		</tr>
 		<tr>
 			<td>Story: </td>
-			<td><?php echo $row[3]; ?></td>
+			<td><?php echo $row[2]; ?></td>
 		</tr>
 		<tr>
 			<td>IFSC: </td>
