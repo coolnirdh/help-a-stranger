@@ -1,4 +1,17 @@
 <?php
+
+$timeInSeconds = time();
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$uuid = null;
+$uuid_cookie_name = "uuid";
+if(isset($_COOKIE[$uuid_cookie_name])) {
+	$uuid = $_COOKIE[$uuid_cookie_name];
+} else {
+	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
+}
+$pageVisitId = bin2hex(random_bytes(16));
+
 // include configurations
 require 'config.php';
 
@@ -71,7 +84,7 @@ $upi = $row[6];
 $form_url = 'report-bad-upi.php?mobile='.$mobile.'&name='.$name.'&upi='.$upi;
 $copy_form_url = 'update.php?mobile='.$mobile;
 
-update_displayCount($mobile);
+recordPageVisit($timeInSeconds, $pageVisitId, $uuid, $userAgent, $mobile);
 
 ?>
 <!doctype html>
