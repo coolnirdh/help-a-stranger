@@ -60,7 +60,7 @@ function update_lastShown($last_shown){
 	
 }
 
-function recordPageVisit($timestamp, $pageVisitId, $uuid, $userAgent, $mobile) {
+function capture($range, $record) {
 	$client = new Google_Client();
 	$client->setApplicationName($GLOBALS['google_app_name']);
 	$client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
@@ -72,10 +72,8 @@ function recordPageVisit($timestamp, $pageVisitId, $uuid, $userAgent, $mobile) {
 
 	$spreadsheetID = $GLOBALS['google_spreadsheet_ID'];
 
-	$range = 'Page Visits';
-
 	$values = [
-		["=$timestamp/86400 + DATE(1970,1,1)", $pageVisitId, $uuid, $userAgent, $mobile],
+		$record,
 	];
 
 	$body = new Google_Service_Sheets_ValueRange([
