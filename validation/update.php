@@ -1,9 +1,9 @@
 <?php
 // include configurations
-require '../config.php';
+require __DIR__.'/../config.php';
 
 // include dependencies
-require_once '../libraries/google-api-php-client-2.4.0/vendor/autoload.php';
+require_once __DIR__.'/../libraries/google-api-php-client-2.4.0/vendor/autoload.php';
 
 $client = new Google_Client();
 $client->setApplicationName($GLOBALS['google_app_name']);

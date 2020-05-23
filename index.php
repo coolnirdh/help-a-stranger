@@ -1,4 +1,5 @@
 <?php
+
 // include configurations
 require 'config.php';
 
@@ -66,12 +67,23 @@ if($GLOBALS['seq_entries'] == 1){
 }
 
 $mobile = $row[0];
-$name = $row[1];
-$upi = $row[6];
-$form_url = 'report-bad-upi.php?mobile='.$mobile.'&name='.$name.'&upi='.$upi;
-$copy_form_url = 'update.php?mobile='.$mobile;
 
-update_displayCount($mobile);
+$timeInSeconds = time();
+$uuid = null;
+$uuid_cookie_name = "uuid";
+if(isset($_COOKIE[$uuid_cookie_name])) {
+	$uuid = $_COOKIE[$uuid_cookie_name];
+} else {
+	$userAgent = $_SERVER['HTTP_USER_AGENT'];
+	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
+	capture('Browser Details', [$uuid, $userAgent]);
+}
+
+$pageVisitId = bin2hex(random_bytes(16));
+capture('Page Visits', ["=$timeInSeconds/86400 + DATE(1970,1,1)", $pageVisitId, $uuid, $mobile]);
+$form_url = 'report-bad-upi.php?pageVisitId='.$pageVisitId;
+$copy_form_url = 'update.php?pageVisitId='.$pageVisitId;
 
 ?>
 <!doctype html>

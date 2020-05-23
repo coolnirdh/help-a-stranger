@@ -57,11 +57,10 @@ function update_lastShown($last_shown){
 	try{
 	$response = $service->spreadsheets_values->update($spreadsheetID, $range, $body, $params);
 	} catch(Exception $e){}
-
 	
 }
 
-function update_displayCount($mobile){
+function capture($range, $record) {
 	$client = new Google_Client();
 	$client->setApplicationName($GLOBALS['google_app_name']);
 	$client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
@@ -73,46 +72,8 @@ function update_displayCount($mobile){
 
 	$spreadsheetID = $GLOBALS['google_spreadsheet_ID'];
 
-	$range = 'Unique Values!A:J';
-
-	$response = $service->spreadsheets_values->get($spreadsheetID, $range);
-
-	$values = $response->getValues();
-
-	if($values == NULL){
-		echo 'Invalid Spreadsheet.';
-		exit();
-	}
-
-	$i = 0;
-
-	while(1){
-		$row = $values[$i];
-		if($row[0] == $mobile){
-			//Match Found. Update This Row.
-			break;
-		}
-		else{
-			$i++;
-		}
-	}
-
-	$count = $values[$i][8];
-	if($count == NULL) {
-		$count = 0;
-	}
-
-	$count++;
-	$i = $i+1;
-
-	// UPDATION HAPPENS HERE
-	$service = new Google_Service_Sheets($client);
-
-
-	$range = 'Unique Values!I'.$i;
-	
 	$values = [
-		[$count],
+		$record,
 	];
 
 	$body = new Google_Service_Sheets_ValueRange([
@@ -120,14 +81,16 @@ function update_displayCount($mobile){
 	]);
 
 	$params = [
-		'valueInputOption' => 'RAW'
+		'valueInputOption' => 'USER_ENTERED'
+	];
+
+	$insert = [
+		"insertData" => "INSERT_ROWS"
 	];
 
 	try{
-	$response = $service->spreadsheets_values->update($spreadsheetID, $range, $body, $params);
-	} catch(Exception $e){}
-
-	
+		$response = $service->spreadsheets_values->append($spreadsheetID, $range, $body, $params, $insert);
+	}catch(Exception $e){}
 }
 
 function get_entries(){
