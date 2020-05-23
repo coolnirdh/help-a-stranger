@@ -9,10 +9,10 @@ $organisation_name = 'Covid19 India Handbook';
 $google_app_name = 'Help A Stranger';
 
 //GOOGLE SHEETS API JSON CREDENTIALS FILENAME - MAKE SURE THIS FILE IS IN THE 'assets' FOLDER
-$google_sheets_json_filename = 'help-a-stranger-213eac0c1d60.json';
+$google_sheets_json_filename = 'helpastranger-19c59abd4b4e.json';
 
 //GOOGLE SHEETS API AUTH KEY
-$google_sheets_api_auth_key = '213eac0c1d60e402b21219efafb4e368af3fb701';
+$google_sheets_api_auth_key = '19c59abd4b4e2a9f3be683038a1496e465129141';
 
 //SPREADSHEET ID
 $google_spreadsheet_ID = '1eCtI5KPupmb90ORaSXwyGh_cdtOkh5n65DGN5NTilzM';
