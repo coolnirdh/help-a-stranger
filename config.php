@@ -54,5 +54,5 @@ $GLOBALS['fb_og_img'] = $fb_og_img;
 $GLOBALS['seq_entries'] = $sequential_entries;
 
 
-$GLOBALS['footer_links'] = '- Code by <a href="https://www.instagram.com/suryavasishta/" target="_blank">@suryavasishta</a> -<br/><a href="https://www.google.com/search?q=pay+it+forward+meaning" target="_blank">No Rights Reserved.</a>';
+$GLOBALS['footer_links'] = '- <a href="https://github.com/coolnirdh/help-a-stranger">Code</a> by <a href="https://covidindiasupport.com/about/team" target="_blank">Covid India Support Team</a> -<br/><a href="https://www.google.com/search?q=pay+it+forward+meaning" target="_blank">No Rights Reserved.</a>';
 ?>

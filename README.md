@@ -1,5 +1,17 @@
 # Help A Stranger
 
+This project started as an inspiration from the success of [Home Talkies' Help KFI Workers](http://www.hometalkies.com/help-kfi-workers/) initiative, leveraging ideas and source code [shared](http://www.astustudios.com/help-a-stranger-app/) by [Surya](https://www.instagram.com/suryavasishta/).
+
+We've made several changes to the repository since then, specifically to achieve the following:
+1. Support both UPI and Traditional Bank Account Details.
+1. Change data gathering process such that we minimise risk of fraud by directly working with trusted NGOs.
+1. Add metrics for deriving numbers around success of our efforts, like which beneficiary is shown how often, and how many times do people actually copy details, and an optional prompt to ask how much someone has donated.
+1. Eliminate bugs that could have caused leak of mobile numbers of beneficiaries to the visitors of this site.
+1. Changes that allow us to deploy onto Google Cloud.
+1. Other performance improvements.
+
+We understand it won't be straightforward to take the source code and start using it, but feel free to give us a nudge and we'd be happy to help you set it all up!
+
 ## Performing a deployment:
 This project is deployed to [Google Cloud's App Engine](https://cloud.google.com/appengine/docs/standard/php7) with PHP 7.3 Runtime.
 
