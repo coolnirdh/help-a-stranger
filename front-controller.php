@@ -1,5 +1,11 @@
-
 <?php
+
+$uuid_cookie_name = "uuid";
+if(!isset($_COOKIE[$uuid_cookie_name])) {
+	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
+}
+
 switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
 	case '/update.php':
 		require 'update.php';

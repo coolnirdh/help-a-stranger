@@ -7,6 +7,18 @@ require 'config.php';
 require_once 'libraries/google-api-php-client-2.4.0/vendor/autoload.php';
 require_once 'functions.php';
 
+$timeInSeconds = time();
+$uuid = null;
+$uuid_cookie_name = "uuid";
+if(isset($_COOKIE[$uuid_cookie_name])) {
+	$uuid = $_COOKIE[$uuid_cookie_name];
+} else {
+	$userAgent = $_SERVER['HTTP_USER_AGENT'];
+	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
+	capture('Browser Details', [$uuid, $userAgent]);
+}
+
 if($GLOBALS['organisation_name'] == '' || $GLOBALS['google_app_name'] == '' || $GLOBALS['google_sheets_json_filename'] == '' || $GLOBALS['google_sheets_api_auth_key'] == '' || $GLOBALS['google_spreadsheet_ID'] == ''){
 	echo '<br/><div style="text-align: center; font-family: Arial;"><img src="images/crying-trex.png" style="width: 250px;"/><h1>SETUP INCOMPLETE.</h1><p>Check everything in config.php.<br/>Meanwhile, it\'s best the code is not run. We\'re scooting!</p></div>';
 	exit();
@@ -67,18 +79,6 @@ if($GLOBALS['seq_entries'] == 1){
 }
 
 $mobile = $row[0];
-
-$timeInSeconds = time();
-$uuid = null;
-$uuid_cookie_name = "uuid";
-if(isset($_COOKIE[$uuid_cookie_name])) {
-	$uuid = $_COOKIE[$uuid_cookie_name];
-} else {
-	$userAgent = $_SERVER['HTTP_USER_AGENT'];
-	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
-	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
-	capture('Browser Details', [$uuid, $userAgent]);
-}
 
 $pageVisitId = bin2hex(random_bytes(16));
 capture('Page Visits', ["=$timeInSeconds/86400 + DATE(1970,1,1)", $pageVisitId, $uuid, $mobile]);
