@@ -274,7 +274,9 @@ function copyToClipboard(text) {
 			</div>
 			<div class="col-md-9">
 				<!-- YOU CAN EDIT THE CONTENT TO BE DISPLAYED HERE. KEEP IT SHORT THOUGH. -->
-		Due to the nation wide lockdown, many daily wage workers have not earned anything. They don't know where their next meal is coming from, or even if they have such a thing as a next meal. While nation-wide initiatives are a good thing and it is inspiring to see how we have risen to the occasion as a country, centralised funds of any form need time to reach that last person - who often is the one that needs it immediately. Hence, this little effort.
+		<p>Due to the nation wide lockdown, many daily wage workers have not earned anything. They don't know where their next meal is coming from, or even if they have such a thing as a next meal. While nation-wide initiatives are a good thing and it is inspiring to see how we have risen to the occasion as a country, centralised funds of any form need time to reach that last person - who often is the one that needs it immediately. Hence, this little effort.</p>
+
+		<p>Each refresh of this page shows details of a new individual in need. These beneficiaries have been vetted by our trusted data partners who are well established NGO’s and collectives.</p>
 			</div>
 		</div>
 	<br style="clear: both;"/>
@@ -305,6 +307,10 @@ function copyToClipboard(text) {
 			<td>Account: </td>
 			<?php $to_copy = $row[6]; ?>
 			<td><div class="upi-div" style="cursor: pointer; border-radius: 3px; padding-left: 10px;"onClick="javascript: copyToClipboard('<?php echo $to_copy; ?>');"><?php echo ($row[6]); ?> <div class="copy-btn">COPY</div></div></td>
+		</tr>
+		<tr>
+			<td>Status: </td>
+			<td><img src="images/verified-png-4.png" style="width: 25px; margin: 0"/> Verified by <a href="https://www.indiacarecollective.org/">India Care Collective</a></td>
 		</tr>
 	</table>
 	</div>
@@ -355,7 +361,7 @@ function copyToClipboard(text) {
 <div style="padding: 7px; text-align: left;">
 	<br/>
 	<ul>
-		<li>Copy the UPI ID and transfer money from your own UPI app to <?php echo $row[1]; ?>'s bank account.</li>
+		<li>Copy the account details above and transfer money from your banking app directly to <?php echo $row[1]; ?>'s bank account.</li>
 		<li>You can send any amount of money. It is upto you.</li>
 		<li>If your transaction fails, please <span class="Tx-Fail-Div" style="color: #000; text-decoration: underline;">click here</span> to report the faulty ID to us.</li>
 		<li>Thank you for your generosity. Hope you continue to help more workers.</li>
@@ -367,9 +373,15 @@ function copyToClipboard(text) {
 	<br/>
 	Disclaimer:
 	<ul>
-		<li>The details are submitted to "<?php echo $GLOBALS['organisation_name']; ?>" by the workers themselves.</li>
-		<li><?php echo $GLOBALS['organisation_name']; ?> doesn't take any money from the workers for this service.</li>
+		<li>The details of beneficiaries shown are vetted by our trusted data partners who are well established NGO’s and collectives.</li>
+		<li>We at <a href="https://covidindiasupport.com">covidindiasupport.com</a> and our data partners do not take any money from the workers for this service.</li>
 		<li>It's free for everyone.</li>
+	</ul>
+	<br/>
+	Contact us:
+	<ul>
+		<li>To become a data partner, mail us at covidindiahandbook[at]gmail[dot]com </li>
+		<li>Or spread some love and kindness by following us at <a href="https://www.instagram.com/covid_india_support/">Instagram</a>.</li>
 	</ul>
 </div>
 	
