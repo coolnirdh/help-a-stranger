@@ -9,7 +9,7 @@ require_once 'functions.php';
 
 $timeInSeconds = time();
 $uuid = null;
-$uuid_cookie_name = "uuid";
+$uuid_cookie_name = "uuid-1";
 if(isset($_COOKIE[$uuid_cookie_name])) {
 	$uuid = $_COOKIE[$uuid_cookie_name];
 } else {

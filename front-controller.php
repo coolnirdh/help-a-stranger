@@ -1,6 +1,6 @@
 <?php
 
-$uuid_cookie_name = "uuid";
+$uuid_cookie_name = "uuid-1";
 if(!isset($_COOKIE[$uuid_cookie_name])) {
 	$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 	setcookie($uuid_cookie_name, $uuid, $timeInSeconds + (86400 * 365), "/"); // 86400 = 1 day
