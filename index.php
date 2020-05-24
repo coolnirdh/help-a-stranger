@@ -84,6 +84,7 @@ $pageVisitId = bin2hex(random_bytes(16));
 capture('Page Visits', ["=$timeInSeconds/86400 + DATE(1970,1,1)", $pageVisitId, $uuid, $mobile]);
 $form_url = 'report-bad-upi.php?pageVisitId='.$pageVisitId;
 $copy_form_url = 'update.php?pageVisitId='.$pageVisitId;
+$donation_form_url = 'donate.php?pageVisitId='.$pageVisitId;
 
 ?>
 <!doctype html>
@@ -114,6 +115,8 @@ $copy_form_url = 'update.php?pageVisitId='.$pageVisitId;
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 
 <script type="text/javascript">
 // Copies a string to the clipboard. Must be called from within an
@@ -167,18 +170,84 @@ function copyToClipboard(text) {
 	  $(".upi-div:last").click(function(){
 		$.get("<?php echo $copy_form_url; ?>"); 
 		$(this).find('.copy-btn').html('COPIED').addClass("copied");
+		$('#donationModal').modal('show')
 	  });
 	  
 	  $(".upi-div").click(function(){
 		$(this).find('.copy-btn').html('COPIED').addClass("copied");
 	  });
 
+          $("#donationForm").validate({
+            rules: {
+              Amount: {
+                required: true,
+                min: {
+		  param: 15
+		}
+              }
+            },
+            messages: {
+              Amount: {
+                required: "Please enter an amount.",
+                min: "Amount must be at least 1 rupee."
+              },
+            },
+            errorPlacement: function ( error, element ) {
+              if(element.parent().hasClass('input-group')){
+                error.insertAfter( element.parent() );
+              }else{
+          	error.insertAfter( element );
+              }
+            },
+            submitHandler: function(form) {
+              $.get("<?php echo $donation_form_url.'&'; ?>" + $("#donationForm").serialize()); 
+	      $("#donationForm").trigger("reset");
+	      $("#donationModal").modal('hide');
+              return true;
+            }
+          });
 	});
 </script>
 	
 </head>
 
 <body>
+
+<div class="modal fade" id="donationModal" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">Donation Details</h4>
+      </div>
+      <div class="modal-body">
+        <form id="donationForm">
+	  <div class="row">
+            <div class="col-md-12">
+	      <h4>Thank you for choosing to donate!</h4>
+	      <p>Letting us know how much you donated helps us ensure fair distribution of funds to each of the beneficiaries registered with us. We'd appreciate you taking a moment to share with us how much you donated</p>
+	    </div>
+          </div>
+	  <br/>
+          <div class="form-group">
+           <label for="amount" class="sr-only">Amount in Indian Rupees</label>
+           <div class="input-group col-sm-offset-4 col-sm-4 col-xs-offset-2 col-xs-8">
+             <div class="input-group-addon">₹</div>
+             <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount" required min="1"/>
+             <div class="input-group-addon">.00</div>
+    	   </div>
+          </div>
+	  <br/><br/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" id="donationFormSubmit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="Bad-Upi-Report">The Entry has been Reported. Reloading Page...</div>
 <div class="reload-overlay-div"></div>
@@ -278,7 +347,7 @@ function copyToClipboard(text) {
 	<div class="clearfix"></div>
 </div>
 	<div class="Tip-Div" style="text-align: center;">
-		<div>TIP: Visit this page everyday and share as little as Rs. 50/- with the worker you see on your screen. It feeds them for the day.</div>
+		<div>TIP: Visit this page everyday and share as little as Rs. 50/- with the worker you see on your screen, or consider adopting their family for Rs. 2500 and help them with their expenses for a complete month.</div>
 	</div>
 </div>
 	
@@ -312,7 +381,7 @@ function copyToClipboard(text) {
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
