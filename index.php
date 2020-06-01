@@ -382,6 +382,9 @@ function copyToClipboard(text) {
 	<ul>
 		<li>To become a data partner, mail us at covidindiahandbook[at]gmail[dot]com </li>
 		<li>Or spread some love and kindness by following us at <a href="https://www.instagram.com/covid_india_support/">Instagram</a>.</li>
+		<li>Share your feedback with us, by dropping a message on our <a href="https://www.facebook.com/covidindiasupport">Facebook page</a>.</li>
+		<li>Contribute to the project by <a href="https://join.slack.com/t/covid-19indiasupport/shared_invite/zt-d0qjoovn-4VE2rEaVmKqY84TrTMIxug">joining our Slack group</a>.</li>
+		<li>Find all other COVID-19 related resources and projects at our <a href="https://covidindiasupport.com/">main site<a/>.</li>
 	</ul>
 </div>
 	
